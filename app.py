@@ -64,17 +64,17 @@ def main():
             if st.session_state.current_question > 0:
                 if st.form_submit_button("Previous"):
                     st.session_state.current_question -= 1
-                    st.experimental_rerun()
+                    st.rerun()
         
         with col2:
             if st.session_state.current_question < total_questions - 1:
                 if st.form_submit_button("Next"):
                     st.session_state.current_question += 1
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 if st.form_submit_button("Submit for Diagnosis"):
                     st.session_state.diagnosis = get_diagnosis(llm, st.session_state.answers)
-                    st.experimental_rerun()
+                    st.rerun()
     
     # Display diagnosis if available
     if st.session_state.diagnosis:
@@ -86,7 +86,7 @@ def main():
             st.session_state.answers = {}
             st.session_state.diagnosis = None
             st.session_state.current_question = 0
-            st.experimental_rerun()
+            st.rerun()
 
 if __name__ == "__main__":
     main() 
